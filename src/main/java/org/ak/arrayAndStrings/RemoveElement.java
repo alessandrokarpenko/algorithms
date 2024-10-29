@@ -1,5 +1,7 @@
 package org.ak.arrayAndStrings;
 
+import java.util.Arrays;
+
 public class RemoveElement {
 /*
 Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
@@ -52,7 +54,41 @@ Constraints:
 
     public static void main(String[] args) {
 
+        RemoveElement removeElement = new RemoveElement();
+        int[] nums = {0,1,2,2,3,0,4,2};
+        int val = 2;
+        int k = removeElement.removeElement(nums,val);
+
+        System.out.println(k);
     }
 
+    public int removeElement(int[] nums, int val) {
 
+        int counter = 0;
+
+        for (int i=0; i<nums.length;i++) {
+            if (nums[i] == val) {
+                nums[i] = Integer.MAX_VALUE;
+                counter++;
+            }
+        }
+
+        Arrays.sort(nums);
+
+// if we do not want to have first k elements sorted
+//        int j = 0;
+//        for (int i = 0; i < nums.length; i++) {
+//            if (nums[i] != Integer.MAX_VALUE) {
+//                nums[j] = nums[i];
+//                j++;
+//            }
+//        }
+//        while (j < nums.length) {
+//            nums[j] = Integer.MAX_VALUE;
+//            j++;
+//        }
+
+        System.out.println(Arrays.toString(nums));
+        return nums.length - counter;
+    }
 }
